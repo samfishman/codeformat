@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+
+    "name": "Code Stylizer",
+    "description": "Formats code on the web.",
+    "version": "1.0",
+
+    "permissions": [
+        "activeTab"
+    ],
+
+    "commands": {
+        "highlight-code": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+E",
+                "mac": "Command+Shift+E"
+            },
+            "description": "Syntax-highlight what you have highlighted"
+        }
+    },
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    "browser_action": {
+        "default_title": "Codify"
+    }
+}
