@@ -49,7 +49,21 @@ if (typeof window.getSelection != "undefined") {
             var range = selection.getRangeAt(i);
             parentCode = getParentCode(range);
             if (parentCode) {
-                continue;
+                var before = new Range();
+                var after = new Range();
+                before.setStart(range.startContainer, 0);
+                before.setEnd(range.startContainer, range.startOffset);
+                after.setStart(range.endContainer, range.endOffset);
+                after.setEndAfter(range.endContainer);
+
+                combiner = document.createElement("span");
+                if (before.toString() != "")
+                    combiner.appendChild(codify(before));
+                combiner.appendChild(codify(range));
+                if (after.toString() != "")
+                    combiner.appendChild(codify(after));
+
+                parentCode.parentNode.replaceChild(combiner, parentCode);
             }
             else {
                 range.insertNode(codify(range));
