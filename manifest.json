@@ -12,8 +12,8 @@
     "commands": {
         "highlight-code": {
             "suggested_key": {
-                "default": "Ctrl+Alt+C",
-                "mac": "Command+Opt+C"
+                "default": "Alt+C",
+                "mac": "Alt+C"
             },
             "description": "Syntax-highlight what you have highlighted"
         }
