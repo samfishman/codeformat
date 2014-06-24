@@ -8,9 +8,21 @@ function getParentCode(range) {
     while (cur) {
         if (cur.nodeName == "CODE" && cur.className == "highlight-code")
             return cur;
-        cur = cur.parentNode
+        cur = cur.parentNode;
     }
     return null;
+}
+
+function deleteEmptyParent(node) {
+    cur = node
+    while (cur) {
+        if (cur.nodeName == "CODE" && cur.className == "highlight-code" && (cur.innerHTML == "" ||
+                                                                            cur.innerHTML == " ")) {
+            cur.parentNode.removeChild(cur);
+            return;
+        }
+        cur = cur.parentNode;
+    }
 }
 
 function recursiveAppend(to, from) {
@@ -37,7 +49,14 @@ function codify(range) {
     if (typeof wrapper.style.setAttribute != "undefined")
         wrapper.style.setAttribute("cssText", STYLE_STRING); // IE Fix
     recursiveAppend(wrapper, conts);
+
+    sContainer = range.startContainer;
+    eContainer = range.endContainer;
+
     range.deleteContents();
+
+    deleteEmptyParent(sContainer);
+    deleteEmptyParent(eContainer);
 
     return wrapper;
 }
