@@ -12,10 +12,15 @@
     "commands": {
         "highlight-code": {
             "suggested_key": {
-                "default": "Alt+C",
-                "mac": "Alt+C"
+                "default": "Ctrl+J"
             },
             "description": "Syntax-highlight what you have highlighted"
+        },
+        "un-highlight-code": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+J"
+            },
+            "description": "Unhighlight a highlighted block"
         }
     },
 
